@@ -1,0 +1,38 @@
+{% extends 'portal/layout.html' %}
+
+{% block body %}
+
+
+        <div class="container comps_menu">
+            <div class="row">
+                <div class="col"><button type="button" class="btn btn-primary add_comp" name="add_comp">Add New Computer</button></div>
+                <div class="col"><input type="text" class="form-control"  id="comp_search" name="comp_search"></div>
+            </div>
+        </div>    
+        <h1 class="test"></h1>
+        <div class="add_comp_form">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_ul}}
+                <input type="submit"  class="btn btn-primary" name="new_comp" value="Add">
+            </form>
+        </div>            
+    </nav>
+
+    {% for comp in comps %}
+    
+        <div class="container">
+            <div class="row" id="comp_row">
+                <div class="col comp_item">{{comp.user}}</div>
+                <div class="col comp_item">{{comp.name}}</div>
+                <div class="col comp_item">{{comp.CPU}}</div>
+                <div class="col comp_item">{{comp.RAM}}</div>
+                <div class="col comp_item">{{comp.HDD}}</div>
+                <div class="col comp_item">{{comp.OS}}</div>
+                <div class="col comp_item">{{comp.monitor}}</div>
+                <div class="col comp_item">{{comp.installed}}</div>
+            </div>
+        </div>
+            
+    {% endfor %}
+{% endblock %}
